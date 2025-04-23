@@ -1,0 +1,135 @@
+<!-- PIXELPASS Travel Page -->
+<div style="font-family: 'Segoe UI', sans-serif; scroll-behavior: smooth;">
+
+    <!-- NAVIGATION BAR -->
+    <header style="display: flex; justify-content: space-between; align-items: center; padding: 20px; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100;">
+      <div style="font-weight: bold; font-size: 1.5rem; color: navy;">PIXELPASS</div>
+      <nav>
+        <a href="#home" style="margin-right: 20px; text-decoration: none; color: black;">Home</a>
+        <a href="#about" style="margin-right: 20px; text-decoration: none; color: black;">About Us</a>
+        <a href="#destinations" style="margin-right: 20px; text-decoration: none; color: black;">Destinations</a>
+        <a href="#availability" style="margin-right: 20px; text-decoration: none; color: black;">Availability</a>
+      </nav>
+    </header>
+  
+    <!-- HERO SECTION -->
+    <section id="home" style="background: url('beach.jpg') center/cover no-repeat; padding: 80px 20px; color: white; text-align: center;">
+      <h1 style="font-size: 3rem; margin-bottom: 10px;">Explore Lian, Batangas Today</h1>
+      <p style="font-size: 1.2rem;">Experience the peace of Lian—from hidden shores to unforgettable stays.</p>
+      <input type="text" placeholder="Search tour Hotel Name" style="padding: 15px; width: 60%; border-radius: 25px; border: none; margin-top: 20px; max-width: 500px;">
+    </section>
+  
+    <!-- ABOUT SECTION -->
+    <section id="about" style="padding: 60px 20px; text-align: center; background-color: #f5f5f5;">
+      <h2 style="font-size: 2rem; margin-bottom: 20px;">About Us</h2>
+      <p style="max-width: 700px; margin: auto; font-size: 1.1rem;">
+        PixelPass is your digital gateway to unforgettable travel experiences. Based in Lian, Batangas, we specialize in making hidden paradises accessible—from beautiful beaches to local delicacies and cultural landmarks.
+      </p>
+    </section>
+  
+    <!-- TOURIST DESTINATIONS SECTION -->
+    <section id="destinations" style="padding: 60px 20px;">
+      <h2 style="text-align: left; font-size: 2rem; margin-bottom: 30px;">Tourist Destinations</h2>
+      <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: flex-start;">
+        <div style="width: 350px; text-align: center;">
+          <img src="Matabungkay_Beach.jpg" style="width: 100%; border-radius: 10px;">
+          <p>Matabungkay Beach</p>
+        </div>
+        <div style="width: 350px; text-align: center;">
+          <img src="San John Parish.jpg" style="width: 100%; border-radius: 10px;">
+          <p>San John Parish</p>
+        </div>
+        <div style="width: 350px; text-align: center;">
+          <img src="lomi.jpg" style="width: 100%; border-radius: 10px;">
+          <p>Lomi Houses</p>
+        </div>
+      </div>
+    </section>
+  
+    <!-- AVAILABILITY SECTION -->
+    <section id="availability" style="padding: 40px 20px; background: #f9f9f9;">
+      <h3 style="font-size: 1.5rem; margin-bottom: 20px;">Availability</h3>
+      <ul style="list-style: none; padding-left: 0; font-size: 1.1rem;">
+        <li>Hotel Veronica – <strong>3 Lttms</strong></li>
+        <li>Lian Homestay – <span style="color: red;">Fully Booked</span></li>
+        <li>Cozy Cabins – <span style="color: green;">Available</span></li>
+      </ul>
+      <a href="#" style="color: blue; text-decoration: underline;">Check More</a>
+    </section>
+  
+    <!-- BOOKING SECTION -->
+    <section style="padding: 50px 20px; text-align: center;">
+      <h3 style="font-size: 1.8rem; margin-bottom: 30px;">Book Your Trip</h3>
+      <form id="bookingForm" style="display: inline-block; max-width: 500px; width: 100%;" onsubmit="handleBooking(event)">
+        <select id="destination" required style="padding: 12px; margin: 10px 0; width: 100%; border-radius: 6px;">
+          <option value="">Choose Destination</option>
+          <option value="Matabungkay Beach">Matabungkay Beach</option>
+          <option value="San John Parish">San John Parish</option>
+          <option value="Lomi Houses">Lomi Houses</option>
+        </select>
+        <input type="date" id="date" required style="padding: 12px; margin: 10px 0; width: 100%; border-radius: 6px;">
+        <select id="guests" required style="padding: 12px; margin: 10px 0; width: 100%; border-radius: 6px;">
+          <option value="">Number of Guests</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3+">3+</option>
+        </select>
+        <button type="submit" style="background: navy; color: white; padding: 12px 30px; border: none; border-radius: 6px; margin-top: 10px;">BOOK NOW</button>
+      </form>
+    </section>
+  
+    <!-- RECEIPT SECTION -->
+    <section id="receipt" style="display: none; padding: 40px 20px; text-align: center; background-color: #f0f8ff;">
+      <h3 style="font-size: 1.6rem; margin-bottom: 20px;">Booking Receipt</h3>
+      <div id="receiptContent" style="font-size: 1.1rem;">
+        <p><strong>Destination:</strong> <span id="receiptDestination"></span></p>
+        <p><strong>Date:</strong> <span id="receiptDate"></span></p>
+        <p><strong>Guests:</strong> <span id="receiptGuests"></span></p>
+      </div>
+      <div style="margin-top: 20px;">
+        <button onclick="window.print()" style="padding: 10px 20px; margin-right: 10px; border: none; background: navy; color: white; border-radius: 6px;">Print Receipt</button>
+        <button onclick="downloadPDF()" style="padding: 10px 20px; border: none; background: darkgreen; color: white; border-radius: 6px;">Download PDF</button>
+      </div>
+    </section>
+  
+  </div>
+  
+  <!-- PDF Script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  
+  <script>
+    function handleBooking(event) {
+      event.preventDefault();
+  
+      const destination = document.getElementById('destination').value;
+      const date = document.getElementById('date').value;
+      const guests = document.getElementById('guests').value;
+  
+      if (destination && date && guests) {
+        document.getElementById('receiptDestination').textContent = destination;
+        document.getElementById('receiptDate').textContent = date;
+        document.getElementById('receiptGuests').textContent = guests;
+  
+        document.getElementById('receipt').style.display = 'block';
+        document.getElementById('bookingForm').reset();
+  
+        window.scrollTo({
+          top: document.getElementById('receipt').offsetTop,
+          behavior: 'smooth'
+        });
+      }
+    }
+  
+    function downloadPDF() {
+      const element = document.getElementById('receiptContent');
+      const options = {
+        margin:       0.5,
+        filename:     'Booking_Receipt.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2 },
+        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+      };
+      html2pdf().set(options).from(element).save();
+    }
+  </script>
+  
